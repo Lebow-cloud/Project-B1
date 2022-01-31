@@ -1,0 +1,18 @@
+#canvas {
+    width: 900px;
+    height: 600px;
+    border: 1px solid purple;
+    margin-left: 180px;
+}
+
+#start-button {
+    font-size: 20px;
+    background-color: rgb(233, 36, 144);
+    color: #fff;
+    padding: 10px 20px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    
+  }
