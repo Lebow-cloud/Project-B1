@@ -27,7 +27,7 @@ startButton.onclick = () => {
 
 document.addEventListener('keyup', event => {
   if (event.code === 'Space') {
-    console.log("shoot bullet")
+    
     game.shootBullet()
   }
 })

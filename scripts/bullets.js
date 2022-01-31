@@ -7,15 +7,21 @@ class Bullets {
 
     move(){
         this.bullets.forEach((bullet)=>{
-            bullet.y += bullet.vy
+
+            
+ 
+
+            bullet.y -= bullet.vy
+                
+            
         })
     }
 
 
     newBullet(playerX){
         
-        console.log(this.bullets)
-        this.bullets.push(this.createNewBullet(playerX))
+        
+        this.bullets.push(this.createNewBullet(playerX))     
        
     }
 
@@ -23,14 +29,13 @@ class Bullets {
         const newBullet = {
             sprite: new Image(),
 
-            x: position,
+            x: position + 5,
             y: 140,
 
-            str: console.log(this.x),
 
-            width:40,
-            height:40,
-            vy: 5,
+            width:5,
+            height:5,
+            vy: 3
             
         }
 
@@ -41,13 +46,8 @@ class Bullets {
         
     }
 
-    
-  
-
-  
-
     draw(){
-        console.log("test into draw")
+        
         this.bullets.forEach(bullet=>
         this.ctx.drawImage(
             
@@ -56,7 +56,7 @@ class Bullets {
             bullet.y,
             bullet.width,
             bullet.height,
-            bullet.str
+           
         ))
     }
 }   

@@ -31,7 +31,7 @@ class Game{
     }
 
     draw(){
-        
+
         this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         this.background.draw(this.frameNumber);
         this.player.draw(this.frameNumber);
@@ -47,7 +47,7 @@ class Game{
 
     shootBullet(){
         
-        this.bullets.newBullet(this.player.x)
+        this.bullets.newBullet(this.player.playerImg.x)
     }
 
    
