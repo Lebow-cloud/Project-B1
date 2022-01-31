@@ -60,20 +60,17 @@ class Game{
        
     for(let i = 0; i < this.bullets.length;)
        if(this.bullets[i].exitsCanvas()) collision = true
-      console.log(collision)
        
    }
 
    checkCollisionsPlayer(){
        let collision = false
        if(player.exitsCanvas()) collision = true
-       // console.log(collision)
    }
 
    createBalls(){
     if(Math.floor(Math.random() *25) % 2 ===0){
         this.balls.push(new ball(this)) // ERROR HEREE ------
-        console.log("New Ball")
     }
     setTimeout(() =>{
         this.createObstacles();
@@ -84,6 +81,8 @@ class Game{
     
 
 }
+
+
 
 
 
