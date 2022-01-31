@@ -1,17 +1,19 @@
-
-
 class Game{
-    constructor(ctx, player, background) {
+    constructor(ctx, player, background, bullets) {
         
         this.ctx = ctx
         this.player = player
         this.background = background
-        this.frameNumber = null
+        this.bullets = bullets
+        this.frameNumber = 0
         
         
 
     }
 
+    //------listener------------
+   
+    
     start(){
         
         this.move()
@@ -25,21 +27,27 @@ class Game{
 
     init(){
         this.start()
-        this.createBullets()
+        
     }
 
-    move() {
-        this.player.move(this.frameNumber)
-    } 
-
     draw(){
-
+        
+        this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         this.background.draw(this.frameNumber);
         this.player.draw(this.frameNumber);
+        this.bullets.draw(this.frameNumber)
         
+    }
+    move() {
+        this.player.move(this.frameNumber)
+        this.bullets.move(this.frameNumber)
+    } 
+
+  
+
+    shootBullet(){
         
-        
-        
+        this.bullets.newBullet(this.player.x)
     }
 
    
