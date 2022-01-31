@@ -1,11 +1,13 @@
 class Game{
-    constructor(ctx, player, background, bullets) {
+    constructor(ctx, player, background, bullets,ball) {
         
         this.ctx = ctx
         this.player = player
         this.background = background
         this.bullets = bullets
         this.frameNumber = 0
+        this.balls = []
+        this.ball = ball
         
         
 
@@ -18,7 +20,9 @@ class Game{
         
         this.move()
         this.draw()
-      
+        
+        this.checkCollisionsBullet()   // NOT WORKING
+        this.checkCollisionsPlayer()   //---WORKING----
         
 
     this.frameNumber = requestAnimationFrame(this.start.bind(this))
@@ -35,7 +39,8 @@ class Game{
         this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         this.background.draw(this.frameNumber);
         this.player.draw(this.frameNumber);
-        this.bullets.draw(this.frameNumber)
+        this.bullets.draw(this.frameNumber);
+        this.ball.draw(this.frameNumber);
         
     }
     move() {
@@ -50,7 +55,31 @@ class Game{
         this.bullets.newBullet(this.player.playerImg.x)
     }
 
-   
+   checkCollisionsBullet(){
+       let collision = false
+       
+    for(let i = 0; i < this.bullets.length;)
+       if(this.bullets[i].exitsCanvas()) collision = true
+      console.log(collision)
+       
+   }
+
+   checkCollisionsPlayer(){
+       let collision = false
+       if(player.exitsCanvas()) collision = true
+       // console.log(collision)
+   }
+
+   createBalls(){
+    if(Math.floor(Math.random() *25) % 2 ===0){
+        this.balls.push(new ball(this)) // ERROR HEREE ------
+        console.log("New Ball")
+    }
+    setTimeout(() =>{
+        this.createObstacles();
+    }, 1500)
+
+   }
 
     
 

@@ -59,4 +59,13 @@ class Player {
     ); 
   } 
 
+  exitsCanvas(){    // -----WORKING!!!-----
+    
+       const checkoutPlayer =  this.playerImg.x > this.ctx.canvas.width || this.playerImg.x + this.playerImg.height < 0
+       return checkoutPlayer
+       
+    }
+
 }
+
+

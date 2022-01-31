@@ -9,9 +9,10 @@ class Bullets {
         this.bullets.forEach((bullet)=>{
 
             
- 
+            
 
             bullet.y -= bullet.vy
+            console.log(bullet.vy)   // AUMENTA SIN PARA LA VY 
                 
             
         })
@@ -35,7 +36,8 @@ class Bullets {
 
             width:5,
             height:5,
-            vy: 3
+            vy: 1
+            
             
         }
 
@@ -59,4 +61,15 @@ class Bullets {
            
         ))
     }
+
+    exitsCanvas(){   // NOT WORKING
+        for(let i=0; i<this.bullets.length;i++){
+           const checkout =  this.bullets[i].y > this.ctx.canvas.height || this.bullets[i].y + this.bullets[i].height < 0
+           return checkout
+           
+        }
+        
+    }
+    
+   
 }   
