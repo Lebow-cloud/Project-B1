@@ -26,9 +26,3 @@ startButton.onclick = () => {
 
 // LISTENER
 
-document.addEventListener('keydown', event => {
-  if (event.code === 'Space') {
-    console.log("shoot")
-    game.shootBullet()
-  }
-})
