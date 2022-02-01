@@ -10,7 +10,7 @@ class Bullets {
     });
 
     this.bullets = this.bullets.filter(
-      (bullet) => bullet.y < this.ctx.canvas.height && bullet.y > 0
+      (bullet) => bullet.y  < this.ctx.canvas.height  && bullet.y  > 0
     );
   }
 
@@ -23,11 +23,11 @@ class Bullets {
       sprite: new Image(5, 5),
 
       x: position + 5,
-      y: 140,
+      y: 135,
 
       width: 5,
       height: 5,
-      
+
       vy: 1,
     };
 
@@ -47,4 +47,17 @@ class Bullets {
       )
     );
   }
+
+ /* collidesWith(pedrazo){
+    let collions = false
+
+    this.bullets.forEach((pedrazo)=>{
+      if(bullets.x >= pedrazo.x && bullets.y > pedrazo.y + pedrazo.height 
+        || bullets.y + bullets.height > pedrazo.y ) 
+
+    })
+  } */
 }
+
+
+

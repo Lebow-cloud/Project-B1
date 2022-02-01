@@ -28,7 +28,7 @@ class Game{
         this.draw()
         
     // this.checkCollisionsBullet()   // NOT WORKING
-    // this.checkCollisionsPlayer()   //---WORKING----
+       this.checkCollisionsPlayer()   
         
 
     this.frameNumber = requestAnimationFrame(this.start.bind(this))
@@ -65,26 +65,23 @@ class Game{
 
     spawnNewBalls(){
         if(Math.floor(Math.random() *25) % 2 ===0){
-           (this.balls.newBall()) // ERROR HEREE ------
+           (this.balls.newBall(this.frameNumber)) // ERROR HEREE ------
         }
         setTimeout(() =>{
-            this.spawnNewBalls();
+            this.spawnNewBalls(this.frameNumber);
         }, 2000)
 
     }
 
-   checkCollisionsBullet(){
-       let collision = false
-       
-    for(let i = 0; i < this.bullets.length;)
-       if(this.bullets[i].exitsCanvas()) collision = true
-       
-   }
+    
+   
 
    checkCollisionsPlayer(){
-       console.log("Player Out!")
+       
        let collision = false
        if(player.exitsCanvas()) collision = true
+
+       
    }
 
   

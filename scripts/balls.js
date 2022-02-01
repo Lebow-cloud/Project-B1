@@ -9,11 +9,12 @@ class Balls {
     this.balls.forEach((ball) => {
       
         ball.y += (Math.random() * 1);
+        
       
     });
   }
 
-  newBall() {
+  newBall(frameNumber) {
    const randomPosX = ()=> {
       let randomX = Math.floor(Math.random() * this.ctx.canvas.width)
       if(randomX > this.ctx.canvas.width + 60) randomX - 60    //STILL SPANW OUTSIDE CANVAS ????
@@ -32,13 +33,13 @@ class Balls {
       sprite: new Image(60, 50),
 
       x: positionX,
-      y: 10,
+      y: -60,
       
-      width: 60,
-      height: 50,
+      width: 40,
+      height: 30,
 
       vy: 0,
-      vx: 0,
+      vx: 1,
     };
     anotherBall.sprite.src = "/images/PURPLE.png";
     

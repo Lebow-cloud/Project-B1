@@ -10,7 +10,7 @@ class Player {
       width: 20,
       height: 20,
       vx: 1,
-      //ax: 0.001   --->> ACCELETARION FLAPPY BIRD WILL GO DOWN
+      
     };
     this.playerImg.img.src = "/images/white-square.png"; 
   }
@@ -61,8 +61,16 @@ class Player {
 
   exitsCanvas(){    // -----WORKING!!!-----
     
-       const checkoutPlayer =  this.playerImg.x > this.ctx.canvas.width || this.playerImg.x + this.playerImg.height < 0
-       return checkoutPlayer
+       const checkoutPlayerRight =  this.playerImg.x  > this.ctx.canvas.width 
+       if(checkoutPlayerRight) this.playerImg.x  = 0
+
+       // return checkoutPlayerRight
+
+       const checkoutPlayerLeft =  this.playerImg.x < 0
+       if(checkoutPlayerLeft) this.playerImg.x = this.ctx.canvas.width - this.playerImg.width - 2
+     
+      // return (checkoutPlayerRight || checkoutPlayerLeft)
+       
        
     }
 
