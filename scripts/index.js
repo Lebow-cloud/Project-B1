@@ -18,7 +18,7 @@ startButton.onclick = () => {
    
 
   startButton.textContent = "Play Again";
-  
+  startButton.blur()
   game.init();
 };
 
