@@ -5,17 +5,13 @@ class Bullets {
   }
 
   move() {
-      this.bullets.forEach((bullet) => {
+    this.bullets.forEach((bullet) => {
       bullet.y -= bullet.vy;
     });
-   
 
     this.bullets = this.bullets.filter(
-        (bullet) =>
-          bullet.y < this.ctx.canvas.height &&
-          bullet.y > 0
-      );
-
+      (bullet) => bullet.y < this.ctx.canvas.height && bullet.y > 0
+    );
   }
 
   newBullet(playerX) {
@@ -31,6 +27,7 @@ class Bullets {
 
       width: 5,
       height: 5,
+      
       vy: 1,
     };
 

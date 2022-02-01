@@ -1,20 +1,21 @@
 class Game{
-    constructor(ctx, player, background, bullets,ball) {
+    constructor(ctx, player, background, bullets,balls) {
         
         this.ctx = ctx
         this.player = player
         this.background = background
         this.bullets = bullets
         this.frameNumber = 0
-        this.balls = []
-        this.ball = ball
+        this.balls = balls
+        
+    
         
         document.addEventListener('keydown', event => {
             if (event.code === 'Space') {
-              console.log("shoot")
+            
               game.shootBullet()
             }
-          })
+          }) 
 
     }
 
@@ -26,8 +27,8 @@ class Game{
         this.move()
         this.draw()
         
-        this.checkCollisionsBullet()   // NOT WORKING
-        this.checkCollisionsPlayer()   //---WORKING----
+    // this.checkCollisionsBullet()   // NOT WORKING
+    // this.checkCollisionsPlayer()   //---WORKING----
         
 
     this.frameNumber = requestAnimationFrame(this.start.bind(this))
@@ -36,6 +37,7 @@ class Game{
 
     init(){
         this.start()
+        this.spawnNewBalls()
         
     }
 
@@ -45,12 +47,13 @@ class Game{
         this.background.draw(this.frameNumber);
         this.player.draw(this.frameNumber);
         this.bullets.draw(this.frameNumber);
-        this.ball.draw(this.frameNumber);
+        this.balls.draw(this.frameNumber);
         
     }
     move() {
         this.player.move(this.frameNumber)
         this.bullets.move(this.frameNumber)
+        this.balls.move(this.frameNumber)
     } 
 
   
@@ -58,6 +61,16 @@ class Game{
     shootBullet(){
         
         this.bullets.newBullet(this.player.playerImg.x)
+    }
+
+    spawnNewBalls(){
+        if(Math.floor(Math.random() *25) % 2 ===0){
+           (this.balls.newBall()) // ERROR HEREE ------
+        }
+        setTimeout(() =>{
+            this.spawnNewBalls();
+        }, 2000)
+
     }
 
    checkCollisionsBullet(){
@@ -69,19 +82,14 @@ class Game{
    }
 
    checkCollisionsPlayer(){
+       console.log("Player Out!")
        let collision = false
        if(player.exitsCanvas()) collision = true
    }
 
-   createBalls(){
-    if(Math.floor(Math.random() *25) % 2 ===0){
-        this.balls.push(new ball(this)) // ERROR HEREE ------
-    }
-    setTimeout(() =>{
-        this.createObstacles();
-    }, 1500)
+  
 
-   }
+   
 
     
 
