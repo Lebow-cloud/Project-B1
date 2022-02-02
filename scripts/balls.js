@@ -73,6 +73,10 @@ class Balls {
       this.ctx.drawImage(ball.sprite, ball.x, ball.y, ball.width, ball.height)
     );
   }
+  
+  init(){
+    this.balls = []
+  }
 
   
 
