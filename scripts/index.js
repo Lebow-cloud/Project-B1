@@ -11,18 +11,23 @@ const bullets = new Bullets (ctx)
 const balls= new Balls (ctx)
 
 
-const game = new Game(ctx, player, background, bullets, balls);
+
+const game = new Game(ctx, player, background, bullets, balls,);
 
 const startButton = document.getElementById("start-button");
 startButton.onclick = () => {
    
 
   startButton.textContent = "Play Again";
+  
   startButton.blur()
   game.init();
+ 
 };
 
 
 
-// LISTENER
+
+
+
 

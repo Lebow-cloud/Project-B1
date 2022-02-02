@@ -1,11 +1,12 @@
 class Game {
-  constructor(ctx, player, background, bullets, balls) {
+  constructor(ctx, player, background, bullets, balls,score) {
     this.ctx = ctx;
     this.player = player;
     this.background = background;
     this.bullets = bullets;
     this.frameNumber = 0;
     this.balls = balls;
+    
 
     document.addEventListener("keydown", (event) => {
       if (event.code === "Space") {
@@ -25,8 +26,8 @@ class Game {
     //this.checkBulletCollision()
     this.playerCollision();
     this.checkBallsCollision();
-
     this.playerTakePortal();
+
     if (this.frameNumber !== null) {
       this.frameNumber = requestAnimationFrame(this.start.bind(this));
     }
@@ -48,6 +49,7 @@ class Game {
     this.player.draw(this.frameNumber);
     this.bullets.draw(this.frameNumber);
     this.balls.draw(this.frameNumber);
+    
   }
   move() {
     this.player.move(this.frameNumber);
@@ -100,7 +102,7 @@ class Game {
   playerCollision() {
     this.balls.balls.forEach((element) => {
       if (this.player.collidesWith(element)) {
-        console.log("GameOver");
+        
         this.gameOver();
       }
     });
@@ -121,4 +123,7 @@ class Game {
     );
     this.ctx.restore();
   }
+
+
+
 }

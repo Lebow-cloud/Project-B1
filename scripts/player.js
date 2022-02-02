@@ -69,9 +69,9 @@ class Player {
     let collide = false;
     if (
       this.playerImg.x < element.x + element.width &&
-      this.playerImg.x + this.playerImg.width > element.x &&
-      this.playerImg.y < element.y + element.height &&
-      this.playerImg.y + this.playerImg.height > element.y
+      this.playerImg.x + this.playerImg.width > element.x  &&
+      this.playerImg.y  < element.y + element.height &&
+      this.playerImg.y + this.playerImg.height > element.y 
     ) {
        return collide = true;
     }
