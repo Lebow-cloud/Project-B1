@@ -87,7 +87,7 @@ class Balls {
         ball.y < element.y + element.height &&
         ball.y + ball.height > element.y
       ) {
-        collide = true;
+         collide = true;
 
       let index = this.balls.indexOf(ball);
       console.log("ball broken")
