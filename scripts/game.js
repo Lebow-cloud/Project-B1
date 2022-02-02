@@ -36,9 +36,14 @@ class Game {
   stop() {
     cancelAnimationFrame(this.frameNumber);
     this.frameNumber = null;
+    startDivButton.style.display='flex'
   }
 
-  init() {
+  init() {   // NOT WORKING WELL
+    this.player.init()
+    this.bullets.init()
+    this.balls.init()
+    this.background.init()
     this.start();
     this.spawnNewBalls();
   }
@@ -91,6 +96,10 @@ class Game {
         const index = this.bullets.bullets.indexOf(element);
 
         this.bullets.bullets.splice(index, 1);
+        console.log("bullet collide")
+        /*  score += 100
+          scoreEl.innerHTML = score
+          console.log(score) */
       }
     });
   }

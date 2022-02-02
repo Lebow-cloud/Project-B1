@@ -10,6 +10,10 @@ const background = new Background(ctx);
 const bullets = new Bullets (ctx)
 const balls= new Balls (ctx)
 
+const scoreEl = document.getElementById("scoreEl")
+const startDivButton = document.getElementById("startDiv")
+
+
 
 
 const game = new Game(ctx, player, background, bullets, balls,);
@@ -19,7 +23,7 @@ startButton.onclick = () => {
    
 
   startButton.textContent = "Play Again";
-  
+  startDivButton.style.display='none'
   startButton.blur()
   game.init();
  

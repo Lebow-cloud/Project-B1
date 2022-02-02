@@ -13,6 +13,14 @@ class Background {
       "images/istockphoto-1202855261-612x612.jpg";
   }
 
+  init(){
+    this.backgroundImg.x = 0
+    this.backgroundImg.y = 0
+    this.backgroundImg.width = 900
+    this.backgroundImg.height = 600
+  
+  }
+
   draw() {
     ctx.fillRect(0,0,900,600)
     

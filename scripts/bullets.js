@@ -17,6 +17,10 @@ class Bullets {
   newBullet(playerX) {
     this.bullets.push(this.createNewBullet(playerX));
   }
+  
+  init(){
+    this.bullets = []
+  }
 
   createNewBullet(position) {
     const rsetrdyf = {

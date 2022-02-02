@@ -13,6 +13,8 @@ class Player {
     this.playerImg.img.src = "/images/white-square.png";
   }
 
+  
+
   move() {
     document.onkeydown = (event) => {
       const key = event.keyCode;
@@ -40,6 +42,14 @@ class Player {
         }
       }
     };
+  }
+
+  init() {
+    this.playerImg.x = 130
+    this.playerImg.y = 140
+    this.playerImg.width = 20
+    this.playerImg.height = 20
+    this.playerImg.vx = 1
   }
 
   draw() {
