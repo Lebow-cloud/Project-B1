@@ -10,7 +10,7 @@ class Bullets {
     });
 
     this.bullets = this.bullets.filter(
-      (bullet) => bullet.y  < this.ctx.canvas.height  && bullet.y  > 0
+      (bullet) => bullet.y < this.ctx.canvas.height && bullet.y > 0
     );
   }
 
@@ -48,16 +48,25 @@ class Bullets {
     );
   }
 
- /* collidesWith(pedrazo){
-    let collions = false
+ /* collidesWith(element) {
+    let collide = false;
+    this.bullets.forEach((bullet) => {
+      if (
+        bullet.x < element.x + element.width &&
+        bullet.x + bullet.width > element.x &&
+        bullet.y < element.y + element.height &&
+        bullet.y + bullet.height > element.y
+      ) {
+        collide = true;
 
-    this.bullets.forEach((pedrazo)=>{
-      if(bullets.x >= pedrazo.x && bullets.y > pedrazo.y + pedrazo.height 
-        || bullets.y + bullets.height > pedrazo.y ) 
+       let index = this.bullets.indexOf(bullet);
 
-    })
+       this.bullets.splice(index, 1);
+      }
+    });
   } */
+
+
+
+
 }
-
-
-

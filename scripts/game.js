@@ -1,5 +1,5 @@
 class Game{
-    constructor(ctx, player, background, bullets,balls) {
+    constructor(ctx, player, background, bullets, balls) {
         
         this.ctx = ctx
         this.player = player
@@ -7,6 +7,7 @@ class Game{
         this.bullets = bullets
         this.frameNumber = 0
         this.balls = balls
+      
         
     
         
@@ -26,8 +27,12 @@ class Game{
         
         this.move()
         this.draw()
+
+        this.ballsRebound()
         
-    // this.checkCollisionsBullet()   // NOT WORKING
+      //this.checkBulletCollision()  
+       this.checkBallsCollision()   
+       
        this.checkCollisionsPlayer()   
         
 
@@ -59,8 +64,10 @@ class Game{
   
 
     shootBullet(){
-        
+      
         this.bullets.newBullet(this.player.playerImg.x)
+        
+    
     }
 
     spawnNewBalls(){
@@ -69,7 +76,7 @@ class Game{
         }
         setTimeout(() =>{
             this.spawnNewBalls(this.frameNumber);
-        }, 2000)
+        }, 500)
 
     }
 
@@ -83,6 +90,31 @@ class Game{
 
        
    }
+
+ /*  checkBulletCollision(){
+       this.balls.balls.forEach(element =>{
+           if(this.bullets.collidesWith(element)){
+               const index = this.balls.indexOf(element)
+               
+              this.balls.splice(index, 1)
+           }
+       })
+   } */
+   
+   checkBallsCollision(){
+       this.bullets.bullets.forEach(element =>{
+           if(this.balls.collidesWith(element)){
+               const index = this.bullets.bullets.indexOf(element)
+               
+              this.bullets.bullets.splice(index, 1)
+           }
+       })
+   } 
+
+   ballsRebound(){
+       this.balls.ballsRebound()
+   }
+   
 
   
 
