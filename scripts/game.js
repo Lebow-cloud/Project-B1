@@ -14,7 +14,15 @@ class Game {
     document.addEventListener("keydown", (event) => {
       if (event.code === "Space") {
         game.shootBullet();
+        this.player.standing = true
         shootSound.play()
+      }
+    });
+    document.addEventListener("keyup", (event) => {
+      if (event.code === "Space") {
+        
+        this.player.standing = false
+        
       }
     });
   }

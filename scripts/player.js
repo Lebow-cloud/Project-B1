@@ -20,6 +20,9 @@ class Player {
     this.width = 90;
     this.height = 70;
     this.vx = 5;
+    this.goingLeft = false
+    this.goingRight = false
+    this.standing = false
 
   }
 
@@ -49,7 +52,7 @@ class Player {
   }
 
   move() {
-   
+   /*
     document.onkeydown = (event) => {
       const key = event.keyCode;
       const possibleKeystrokes = [37, 65, 38, 87, 39, 83, 40, 68];
@@ -68,7 +71,50 @@ class Player {
 ;
         }
       }
+      */
+
+      if(this.goingLeft)this.x -= 10;
+      if(this.goingRight)this.x += 10;
+
+        document.onkeydown = (event) => {
+      const key = event.keyCode;
+      const possibleKeystrokes = [37, 65, 38, 87, 39, 83, 40, 68];
+      if (possibleKeystrokes.includes(key)) {
+        event.preventDefault();
+        switch (key) {
+          case 37:
+          case 65:
+            this.goingLeft = true
+            break;
+         
+          case 39:
+          case 83:
+            this.goingRight = true
+            break;
+;
+        }
+      }
     };
+        document.onkeyup = (event) => {
+      const key = event.keyCode;
+      const possibleKeystrokes = [37, 65, 38, 87, 39, 83, 40, 68];
+      if (possibleKeystrokes.includes(key)) {
+        event.preventDefault();
+        switch (key) {
+          case 37:
+          case 65:
+            this.goingLeft = false
+            break;
+         
+          case 39:
+          case 83:
+            this.goingRight = false
+            break;
+;
+        }
+      }
+    };
+    
   }
 
   /* init() {
@@ -88,7 +134,31 @@ class Player {
       this.playerImg.height
     ); */
 
-    this.ctx.drawImage(
+   if(this.goingLeft && !this.standing){ this.ctx.drawImage(
+      this.imgLeft,
+      34 * this.spriteColLeft, // the x-axis coordinate in the destination canvas
+      0,
+      34,
+      32,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );}
+   if(this.goingRight && !this.standing){ this.ctx.drawImage(
+      this.imgRight,
+      34 * this.spriteColRight, // the x-axis coordinate in the destination canvas
+      0,
+      34,
+      32,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );}
+
+   if(this.standing || (!this.goingLeft && !this.goingRight)){ 
+     this.ctx.drawImage(
       this.imgStand,
       34 * this.spriteColStand, // the x-axis coordinate in the destination canvas
       0,
@@ -98,7 +168,8 @@ class Player {
       this.y,
       this.width,
       this.height
-    );
+    );}
+
     this.setSpriteFrameStand(frameNumber);
     this.setSpriteFrameLeft(frameNumber);
     this.setSpriteFrameRight(frameNumber);
