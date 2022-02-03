@@ -3,7 +3,7 @@ class Background {
     
     this.ctx = ctx;
     this.img = new Image()
-    this.img.src = "/images/beach-bg.png"
+    this.img.src = "./images/beach-bg.png"
     };
 
 

@@ -9,11 +9,11 @@ class Player {
     this.spriteColumnsRight = 4;
 
     this.imgStand = new Image();
-    this.imgStand.src = "/images/player-stand.png";
+    this.imgStand.src = "./images/player-stand.png";
     this.imgLeft = new Image();
-    this.imgLeft.src = "/images/player-left.png";
+    this.imgLeft.src = "./images/player-left.png";
     this.imgRight = new Image();
-    this.imgRight.src = "/images/player-right.png";
+    this.imgRight.src = "./images/player-right.png";
 
     this.x = (this.ctx.canvas.width / 2) - (this.width / 2);
     this.y = this.ctx.canvas.height - 70;

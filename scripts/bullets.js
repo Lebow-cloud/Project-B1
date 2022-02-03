@@ -38,7 +38,7 @@ class Bullets {
       vy: 3,
     };
 
-    rsetrdyf.sprite.src = "/images/arpon.png";
+    rsetrdyf.sprite.src = "./images/arpon.png";
 
     return rsetrdyf;
   }
