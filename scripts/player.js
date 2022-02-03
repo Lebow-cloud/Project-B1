@@ -1,21 +1,55 @@
 class Player {
   constructor(ctx) {
     this.ctx = ctx;
+    this.spriteColStand = 0;
+    this.spriteColumnsStand = 2;
+    this.spriteColLeft = 0;
+    this.spriteColumnsLeft = 4;
+    this.spriteColRight = 0;
+    this.spriteColumnsRight = 4;
 
-    this.playerImg = {
-      img: new Image(),
-      x: this.ctx.canvas.width / 2,
-      y: this.ctx.canvas.height - 80 ,
-      width: 80 ,
-      height: 80 ,
-      vx: 5,
-    };
-    this.playerImg.img.src = "/images/white-square.png";
+    this.imgStand = new Image();
+    this.imgStand.src = "/images/player-stand.png";
+    this.imgLeft = new Image();
+    this.imgLeft.src = "/images/player-left.png";
+    this.imgRight = new Image();
+    this.imgRight.src = "/images/player-right.png";
+
+    this.x = this.ctx.canvas.width / 2;
+    this.y = this.ctx.canvas.height - 70;
+    this.width = 90;
+    this.height = 70;
+    this.vx = 5;
+
   }
 
-  
-  
+  setSpriteFrameStand(frameNumber) {
+    if (frameNumber % 10 === 0) {
+      this.spriteColStand += 1;
+    }
+    if (this.spriteColStand >= this.spriteColumnsStand) {
+      this.spriteColStand = 0;
+    }
+  }
+  setSpriteFrameLeft(frameNumber) {
+    if (frameNumber % 10 === 0) {
+      this.spriteColLeft += 1;
+    }
+    if (this.spriteColLeft >= this.spriteColumnsLeft) {
+      this.spriteColLeft = 0;
+    }
+  }
+  setSpriteFrameRight(frameNumber) {
+    if (frameNumber % 10 === 0) {
+      this.spriteColRight += 1;
+    }
+    if (this.spriteColRight >= this.spriteColumnsRight) {
+      this.spriteColRight = 0;
+    }
+  }
+
   move() {
+   
     document.onkeydown = (event) => {
       const key = event.keyCode;
       const possibleKeystrokes = [37, 65, 38, 87, 39, 83, 40, 68];
@@ -24,27 +58,20 @@ class Player {
         switch (key) {
           case 37:
           case 65:
-            this.playerImg.x -= 20;
+            this.x -= 20;
             break;
-          case 38:
-          case 87:
-            this.playerImg -= 20;
-            break;
+         
           case 39:
           case 83:
-            this.playerImg.x += 20;
-
+            this.x += 20;
             break;
-
-          case 68:
-            this.playerImg.y += 20;
-            break;
+;
         }
       }
     };
   }
 
- /* init() {
+  /* init() {
     this.playerImg.x 
     this.playerImg.y 
     this.playerImg.width 
@@ -52,39 +79,52 @@ class Player {
     this.playerImg.vx 
   } */
 
-  draw() {
-    //ctx.fillRect(140,130,20,20)
-
-    this.ctx.drawImage(
+  draw(frameNumber) {
+    /* this.ctx.drawImage(
       this.playerImg.img,
       this.playerImg.x,
       this.playerImg.y,
       this.playerImg.width,
       this.playerImg.height
+    ); */
+
+    this.ctx.drawImage(
+      this.imgStand,
+      34 * this.spriteColStand, // the x-axis coordinate in the destination canvas
+      0,
+      34,
+      32,
+      this.x,
+      this.y,
+      this.width,
+      this.height
     );
+    this.setSpriteFrameStand(frameNumber);
+    this.setSpriteFrameLeft(frameNumber);
+    this.setSpriteFrameRight(frameNumber);
   }
 
   takePortal() {
     // -----WORKING!!!-----
 
-    const checkoutPlayerRight = this.playerImg.x > this.ctx.canvas.width;
-    if (checkoutPlayerRight) this.playerImg.x = 0;
+    const checkoutPlayerRight = this.x > this.ctx.canvas.width;
+    if (checkoutPlayerRight) this.x = 0;
 
-    const checkoutPlayerLeft = this.playerImg.x < 0;
+    const checkoutPlayerLeft = this.x < 0;
     if (checkoutPlayerLeft)
-      this.playerImg.x = this.ctx.canvas.width - this.playerImg.width - 2;
+      this.x = this.ctx.canvas.width - this.width - 2;
   }
 
   collidesWith(element) {
     let collide = false;
     if (
-      this.playerImg.x < element.x + element.width &&
-      this.playerImg.x + this.playerImg.width > element.x  &&
-      this.playerImg.y  < element.y + element.height &&
-      this.playerImg.y + this.playerImg.height > element.y 
+      this.x < element.x + element.width &&
+      this.x + this.width > element.x &&
+      this.y < element.y + element.height &&
+      this.y + this.height > element.y
     ) {
-       collide = true;
-       
+      collide = true;
     }
-  return collide}
+    return collide;
+  }
 }

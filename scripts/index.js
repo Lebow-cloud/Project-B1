@@ -20,14 +20,22 @@ const startDivButton = document.getElementById("startDiv")
 
 
 
+// AUDIOS
 
 const game = new Game(ctx, player, background, bullets, balls,);
+
+let btsSound = new Audio("/audio/bandaSonora.mp3")
+let gameOverSound = new Audio("/audio/gameover.mp3")
+let bubblePop = new Audio("/audio/burbuja_pop.mp3")
+let shootSound = new Audio("/audio/disparo.mp3")
 
 const startButton = document.getElementById("start-button");
 startButton.onclick = () => {
   startButton.textContent = "Play Again";
   startDivButton.style.display='none'
   startButton.blur()
+  gameOverSound.pause()
+  btsSound.play()
   
   game.init();
  

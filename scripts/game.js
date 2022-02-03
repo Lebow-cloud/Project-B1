@@ -14,6 +14,7 @@ class Game {
     document.addEventListener("keydown", (event) => {
       if (event.code === "Space") {
         game.shootBullet();
+        shootSound.play()
       }
     });
   }
@@ -70,8 +71,8 @@ class Game {
   draw() {
     this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     this.background.draw(this.frameNumber);
-    this.player.draw(this.frameNumber);
     this.bullets.draw(this.frameNumber);
+    this.player.draw(this.frameNumber);
     this.balls.draw(this.fps);
     this.scoreDraw()
     
@@ -91,12 +92,12 @@ class Game {
     this.ctx.save()
     this.ctx.fillStyle ="#FFFFFF"
     this.ctx.font = " bold 25px 'roboto'"
-    this.ctx.fillText (`SCORE: ${this.score}`,20,20)
+    this.ctx.fillText (`SCORE: ${this.score}`,30,30)
     this.ctx.restore()
   }
 
   shootBullet() {
-    this.bullets.newBullet(this.player.playerImg.x);
+    this.bullets.newBullet(this.player.x);
   }
 
 
@@ -160,6 +161,8 @@ class Game {
 
   gameOver() {
     this.stop();
+    btsSound.pause()
+    gameOverSound.play()
     this.ctx.save();
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
     this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -170,6 +173,7 @@ class Game {
       "Game Over",
       this.ctx.canvas.width / 2,
       this.ctx.canvas.height / 2
+    
     );
     this.ctx.restore();
   }

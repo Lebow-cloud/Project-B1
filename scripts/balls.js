@@ -96,6 +96,7 @@ class Balls {
         ball.y + ball.height > element.y
       ) {
          collide = true;
+         bubblePop.play()
          
 
       let index = this.balls.indexOf(ball);

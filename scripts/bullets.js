@@ -26,16 +26,16 @@ class Bullets {
     const rsetrdyf = {
       sprite: new Image(5, 5),
 
-      x: position + 5,
-      y: this.ctx.canvas.height -80,
+      x: position + 40,
+      y: this.ctx.canvas.height -60,
 
-      width: 20,
-      height: 20,
+      width: 3,
+      height: 180,
 
       vy: 3,
     };
 
-    rsetrdyf.sprite.src = "/images/white-square.png";
+    rsetrdyf.sprite.src = "/images/arpon.png";
 
     return rsetrdyf;
   }
