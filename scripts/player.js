@@ -4,17 +4,17 @@ class Player {
 
     this.playerImg = {
       img: new Image(),
-      x: 130,
-      y: 140,
-      width: 20,
-      height: 20,
-      vx: 1,
+      x: this.ctx.canvas.width / 2,
+      y: this.ctx.canvas.height - 80 ,
+      width: 80 ,
+      height: 80 ,
+      vx: 5,
     };
     this.playerImg.img.src = "/images/white-square.png";
   }
 
   
-
+  
   move() {
     document.onkeydown = (event) => {
       const key = event.keyCode;
@@ -44,13 +44,13 @@ class Player {
     };
   }
 
-  init() {
-    this.playerImg.x = 130
-    this.playerImg.y = 140
-    this.playerImg.width = 20
-    this.playerImg.height = 20
-    this.playerImg.vx = 1
-  }
+ /* init() {
+    this.playerImg.x 
+    this.playerImg.y 
+    this.playerImg.width 
+    this.playerImg.height 
+    this.playerImg.vx 
+  } */
 
   draw() {
     //ctx.fillRect(140,130,20,20)
@@ -83,7 +83,8 @@ class Player {
       this.playerImg.y  < element.y + element.height &&
       this.playerImg.y + this.playerImg.height > element.y 
     ) {
-       return collide = true;
+       collide = true;
+       
     }
-  }
+  return collide}
 }

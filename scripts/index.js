@@ -2,7 +2,12 @@
 
 
 const canvas = document.getElementById("canvas");
+
 const ctx = canvas.getContext("2d");
+console.log(canvas.width)
+console.log(canvas.height)
+canvas.width = 900;
+canvas.height = 600;
 //document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 
 const player = new Player(ctx);
@@ -20,11 +25,10 @@ const game = new Game(ctx, player, background, bullets, balls,);
 
 const startButton = document.getElementById("start-button");
 startButton.onclick = () => {
-   
-
   startButton.textContent = "Play Again";
   startDivButton.style.display='none'
   startButton.blur()
+  
   game.init();
  
 };

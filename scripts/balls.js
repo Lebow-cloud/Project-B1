@@ -9,9 +9,13 @@ class Balls {
   move() {
     this.balls.forEach((ball) => {
       
-     
-      ball.y += ball.vy
+      
+      
       ball.x += ball.vx
+
+
+      ball.y += ball.vy
+      
       
       
         
@@ -34,7 +38,7 @@ class Balls {
     })
   }
 
-  newBall(frameNumber) {
+  newBall() {
    const randomPosX = ()=> {
       let randomX = Math.floor(Math.random() * this.ctx.canvas.width)
       if(randomX > this.ctx.canvas.width + 60) randomX - 60    //STILL SPANW OUTSIDE CANVAS ????
@@ -42,9 +46,10 @@ class Balls {
       return randomX
       
     }
-    console.log("Create New Ball");
+    
     
     this.balls.push(this.createNewBalls(randomPosX()));
+    console.log("new ball")
   }
 
 
@@ -55,11 +60,11 @@ class Balls {
       x: positionX,
       y: -60,
       
-      width: 40,
-      height: 30,
+      width: 90,
+      height: 90,
 
-      vy: 1,
-      vx: 1,
+      vy: 3,
+      vx: 3,
     };
     anotherBall.sprite.src = "/images/PURPLE.png";
     
@@ -70,32 +75,33 @@ class Balls {
 
   draw() {
     this.balls.forEach((ball) =>
-      this.ctx.drawImage(ball.sprite, ball.x, ball.y, ball.width, ball.height)
+      this.ctx.drawImage(ball.sprite, ball.x, ball.y, ball.width + 5, ball.height + 5)
     );
   }
   
   init(){
+    
     this.balls = []
+   // console.log("init ball to: ", this.balls)
   }
 
   
-
-
-
   collidesWith(element) {
     let collide = false;
     this.balls.forEach((ball) => {
       if (
-        ball.x < element.x + element.width &&
-        ball.x + ball.width > element.x &&
+        ball.x  < element.x + element.width &&
+        ball.x + ball.width  > element.x &&
         ball.y < element.y + element.height &&
         ball.y + ball.height > element.y
       ) {
          collide = true;
+         
 
       let index = this.balls.indexOf(ball);
-      console.log("ball broken")
+      
       this.balls.splice(index, 1);
+      return collide
       }
     }); 
   

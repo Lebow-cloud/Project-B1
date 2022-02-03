@@ -6,6 +6,9 @@ class Game {
     this.bullets = bullets;
     this.frameNumber = 0;
     this.balls = balls;
+    this.score = 0
+    this.spawnRate = 1500
+    
     
 
     document.addEventListener("keydown", (event) => {
@@ -16,64 +19,103 @@ class Game {
   }
 
   //------listener------------
-
+  init() {   // NOT WORKING WELL
+    this.frameNumber = 0
+    this.score = 0
+   // this.player.init()
+    this.bullets.init()
+    this.balls.init()
+   // this.background.init()
+    this.spawnNewBalls();
+    this.start();
+    
+    console.log("framas init", this.frameNumber)
+    
+   
+  }
+  
   start() {
     this.move();
     this.draw();
-
+    
+    
     this.ballsRebound();
+    this.updateScore()
+    this.spawnNewBalls();
 
     //this.checkBulletCollision()
-    this.playerCollision();
     this.checkBallsCollision();
     this.playerTakePortal();
-
+    
+    if( this.playerCollision()){ game.gameOver()
+     
+      
+    }
     if (this.frameNumber !== null) {
       this.frameNumber = requestAnimationFrame(this.start.bind(this));
     }
+
   }
 
   stop() {
-    cancelAnimationFrame(this.frameNumber);
+    console.log("frames stop", this.frameNumber)
+    cancelAnimationFrame(this.frameNumber)
     this.frameNumber = null;
     startDivButton.style.display='flex'
+    
   }
 
-  init() {   // NOT WORKING WELL
-    this.player.init()
-    this.bullets.init()
-    this.balls.init()
-    this.background.init()
-    this.start();
-    this.spawnNewBalls();
-  }
+  
 
   draw() {
     this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     this.background.draw(this.frameNumber);
     this.player.draw(this.frameNumber);
     this.bullets.draw(this.frameNumber);
-    this.balls.draw(this.frameNumber);
+    this.balls.draw(this.fps);
+    this.scoreDraw()
     
   }
   move() {
+  
     this.player.move(this.frameNumber);
     this.bullets.move(this.frameNumber);
     this.balls.move(this.frameNumber);
+  }
+
+  updateScore(){
+    if(this.frameNumber !== 0 && this.frameNumber % 20 === 0) this.score ++
+  }
+
+  scoreDraw(){
+    this.ctx.save()
+    this.ctx.fillStyle ="#FFFFFF"
+    this.ctx.font = " bold 25px 'roboto'"
+    this.ctx.fillText (`SCORE: ${this.score}`,20,20)
+    this.ctx.restore()
   }
 
   shootBullet() {
     this.bullets.newBullet(this.player.playerImg.x);
   }
 
+
   spawnNewBalls() {
-    if (Math.floor(Math.random() * 25) % 2 === 0) {
-      this.balls.newBall(this.frameNumber); // ERROR HEREE ------
-    }
-    setTimeout(() => {
-      this.spawnNewBalls(this.frameNumber);
-    }, 500);
-  }
+   /* if(this.frameNumber !== 0 && (this.frameNumber % this.spawnRate ) === 0) {
+      this.balls.newBall();
+    } */
+
+   if(this.frameNumber === 1){
+     setInterval(() => {
+       this.balls.newBall();
+       
+     }, this.spawnRate);
+
+   }if(this.score % 20 === 0){
+     this.spawnRate = this.spawnRate - 500
+   }
+   }
+   
 
   playerTakePortal() {
     let collision = false;
@@ -91,12 +133,16 @@ class Game {
    } */
 
   checkBallsCollision() {
-    this.bullets.bullets.forEach((element) => {
+    this.bullets.bullets.forEach((element, bulletIndex) => {
+      
+      
+      
       if (this.balls.collidesWith(element)) {
-        const index = this.bullets.bullets.indexOf(element);
-
-        this.bullets.bullets.splice(index, 1);
+        //const Index = this.bullets.bullets.indexOf(element);
         console.log("bullet collide")
+        this.bullets.bullets.splice(bulletIndex, 1);
+        
+
         /*  score += 100
           scoreEl.innerHTML = score
           console.log(score) */
@@ -109,12 +155,7 @@ class Game {
   }
 
   playerCollision() {
-    this.balls.balls.forEach((element) => {
-      if (this.player.collidesWith(element)) {
-        
-        this.gameOver();
-      }
-    });
+   return this.balls.balls.some((element) => this.player.collidesWith(element));
   }
 
   gameOver() {
@@ -124,7 +165,7 @@ class Game {
     this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     this.ctx.fillStyle = "white";
     this.ctx.textAlign = "center";
-    this.ctx.font = "bold 32px sans-serif";
+    this.ctx.font = "bold 60px sans-serif";
     this.ctx.fillText(
       "Game Over",
       this.ctx.canvas.width / 2,

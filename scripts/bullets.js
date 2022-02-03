@@ -27,12 +27,12 @@ class Bullets {
       sprite: new Image(5, 5),
 
       x: position + 5,
-      y: 135,
+      y: this.ctx.canvas.height -80,
 
-      width: 5,
-      height: 5,
+      width: 20,
+      height: 20,
 
-      vy: 1,
+      vy: 3,
     };
 
     rsetrdyf.sprite.src = "/images/white-square.png";
