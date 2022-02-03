@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Project B </title>
-</head>
-<body>
-
-<div id="portada"> 
-    
-    <div class="title" >
-        <img src="/images/Bubble-Pop.png" alt="">
-    </div>
-    <div id ="instructions">
-        <img id = "keys "src="/images/keys.png" >
-        <img id ="spaceBar "src="/images/spacebar.png" width="110" >
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Project B</title>
+  </head>
+  <body>
+    <div id="portada">
+      <div class="title">
+        <img src="/images/Bubble-Pop.png" alt="" />
+      </div>
+      <div id="instructions">
+        <img id="keys " src="/images/keys.png" />
+        <img id="spaceBar " src="/images/spacebar.png" width="110" />
+      </div>
     </div>
 
-    <div id = "startDiv">
-    <button id="start-button">StartGame</button>
-</div>
+    <div id="startDiv">
+      <button id="start-button">StartGame</button>
+    </div>
 
+    <div id="game-board">
+      <canvas id="canvas" width="0" height="0"></canvas>
+    </div>
 
-<div id = "game-board">
-        <canvas id = "canvas" width="0" height="0" ></canvas>
- </div>
-
-
-    
-
-<script src="/scripts/score.js"></script>
-<script src="scripts/balls.js"></script>
-<script src="scripts/bullets.js"></script>
-<script src="scripts/background.js"></script>
-<script src="scripts/player.js"></script>
-<script src="scripts/game.js"></script>
-<script src="scripts/index.js"></script>
-</body>
+    <script src="/scripts/score.js"></script>
+    <script src="scripts/balls.js"></script>
+    <script src="scripts/bullets.js"></script>
+    <script src="scripts/background.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
 </html>

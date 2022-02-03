@@ -41,7 +41,7 @@ class Balls {
   newBall() {
    const randomPosX = ()=> {
       let randomX = Math.floor(Math.random() * this.ctx.canvas.width)
-      if(randomX > this.ctx.canvas.width + 60) randomX - 60    //STILL SPANW OUTSIDE CANVAS ????
+      if(randomX > this.ctx.canvas.width ) randomX - (this.balls.width )   //STILL SPANW OUTSIDE CANVAS ????
       
       return randomX
       

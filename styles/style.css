@@ -1,47 +1,42 @@
 #canvas {
- 
   border: 1px solid rgb(32, 17, 241);
   border-radius: 5px;
 
   margin-left: 150px;
-  
 }
-#startDiv{
+#startDiv {
   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: stretch;
-	align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
 }
-
 
 #start-button {
   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: stretch;
-	align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
   font-size: 25px;
   background-color: rgb(243, 151, 12);
   color: #fff;
   border: 10px;
   border-radius: 6px;
   width: 150px;
- 
 }
-.title{
-  
+.title {
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: stretch;
-	align-content: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
 }
 
-#instructions{
+#instructions {
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -53,33 +48,23 @@
   margin-right: 407px;
 }
 
-
-
-
-
-body{
+body {
   background-image: url("/images/island.png");
 }
 
-#portada{
-background-image: url("/images/island.png");
-display: flex;
-flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: center;
-height: 500px;
-width: 100%;
-
-
+#portada {
+  background-image: url("/images/island.png");
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  height: 500px;
+  width: 100%;
 }
 
-
-
 .score {
-  
   margin-left: 200px;
   display: fixed;
 }
-

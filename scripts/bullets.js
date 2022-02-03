@@ -32,7 +32,7 @@ class Bullets {
       x: position + 40,
       y: this.ctx.canvas.height -60,
 
-      width: 3,
+      width: 20,
       height: 180,
 
       vy: 3,
