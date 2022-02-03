@@ -16,7 +16,7 @@ const bullets = new Bullets (ctx)
 const balls= new Balls (ctx)
 
 const scoreEl = document.getElementById("scoreEl")
-const startDivButton = document.getElementById("startDiv")
+const startDiv = document.getElementById("startDiv")
 
 
 
@@ -32,7 +32,7 @@ let shootSound = new Audio("/audio/disparo.mp3")
 const startButton = document.getElementById("start-button");
 startButton.onclick = () => {
   startButton.textContent = "Play Again";
-  startDivButton.style.display='none'
+  startDiv.style.display='none'
   startButton.blur()
   gameOverSound.pause()
   btsSound.play()

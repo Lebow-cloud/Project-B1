@@ -15,7 +15,7 @@ class Player {
     this.imgRight = new Image();
     this.imgRight.src = "/images/player-right.png";
 
-    this.x = this.ctx.canvas.width / 2;
+    this.x = (this.ctx.canvas.width / 2) - (this.width / 2);
     this.y = this.ctx.canvas.height - 70;
     this.width = 90;
     this.height = 70;
@@ -24,6 +24,13 @@ class Player {
     this.goingRight = false
     this.standing = false
 
+  }
+
+  init(){
+    this.x = (this.ctx.canvas.width / 2) - (this.width / 2);
+    this.y = this.ctx.canvas.height - 70;
+    this.width = 90;
+    this.height = 70;
   }
 
   setSpriteFrameStand(frameNumber) {
@@ -134,7 +141,7 @@ class Player {
       this.playerImg.height
     ); */
 
-   if(this.goingLeft && !this.standing){ this.ctx.drawImage(
+   if(this.goingLeft && !this.standing && !this.goingRight){ this.ctx.drawImage(
       this.imgLeft,
       34 * this.spriteColLeft, // the x-axis coordinate in the destination canvas
       0,
@@ -145,7 +152,7 @@ class Player {
       this.width,
       this.height
     );}
-   if(this.goingRight && !this.standing){ this.ctx.drawImage(
+   if(this.goingRight && !this.standing && !this.goingLeft){ this.ctx.drawImage(
       this.imgRight,
       34 * this.spriteColRight, // the x-axis coordinate in the destination canvas
       0,
@@ -158,6 +165,18 @@ class Player {
     );}
 
    if(this.standing || (!this.goingLeft && !this.goingRight)){ 
+     this.ctx.drawImage(
+      this.imgStand,
+      34 * this.spriteColStand, // the x-axis coordinate in the destination canvas
+      0,
+      34,
+      32,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );}
+   if(this.goingLeft && this.goingRight){ 
      this.ctx.drawImage(
       this.imgStand,
       34 * this.spriteColStand, // the x-axis coordinate in the destination canvas

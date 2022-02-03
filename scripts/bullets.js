@@ -15,7 +15,10 @@ class Bullets {
   }
 
   newBullet(playerX) {
-    this.bullets.push(this.createNewBullet(playerX));
+    if(this.bullets.length < 3){
+      this.bullets.push(this.createNewBullet(playerX));
+    }
+    
   }
   
   init(){

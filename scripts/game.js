@@ -31,7 +31,7 @@ class Game {
   init() {   // NOT WORKING WELL
     this.frameNumber = 0
     this.score = 0
-   // this.player.init()
+    this.player.init()
     this.bullets.init()
     this.balls.init()
    // this.background.init()
@@ -70,7 +70,7 @@ class Game {
     console.log("frames stop", this.frameNumber)
     cancelAnimationFrame(this.frameNumber)
     this.frameNumber = null;
-    startDivButton.style.display='flex'
+    startDiv.style.display='flex'
     
   }
 
@@ -120,8 +120,9 @@ class Game {
        
      }, this.spawnRate);
 
-   }if(this.score % 20 === 0){
-     this.spawnRate = this.spawnRate - 500
+   }if(this.score % 1001 === 0){
+     this.spawnRate  -= 500
+     console.log(this.spawnRate)
    }
    }
    
