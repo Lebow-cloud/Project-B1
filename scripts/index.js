@@ -34,6 +34,7 @@ startButton.onclick = () => {
   startButton.textContent = "Play Again";
   startDiv.style.display='none'
   removePortada.style.display='none'
+  gameOverSound.currentTime = 100
   canvas.width = 900;
   canvas.height = 600;
   startButton.blur()
