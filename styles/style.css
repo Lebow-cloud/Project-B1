@@ -49,11 +49,11 @@
 }
 
 body {
-  background-image: url("./images/island.png");
+  background-image: url("./../images/island.png");
 }
 
 #portada {
-  background-image: url("./images/island.png");
+  background-image: url("./../images/island.png");
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
