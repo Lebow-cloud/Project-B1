@@ -41,7 +41,7 @@ class Balls {
   newBall() {
    const randomPosX = ()=> {
       let randomX = Math.floor(Math.random() * this.ctx.canvas.width)
-      if(randomX > this.ctx.canvas.width ) randomX - (this.balls.width )   //STILL SPANW OUTSIDE CANVAS ????
+      if(randomX > this.ctx.canvas.width ) randomX - (this.balls.width )   
       
       return randomX
       
@@ -75,14 +75,14 @@ class Balls {
 
   draw() {
     this.balls.forEach((ball) =>
-      this.ctx.drawImage(ball.sprite, ball.x, ball.y, ball.width + 5, ball.height + 5)
+      this.ctx.drawImage(ball.sprite, ball.x, ball.y, ball.width + 15, ball.height + 15)
     );
   }
   
   init(){
     
     this.balls = []
-   // console.log("init ball to: ", this.balls)
+   
   }
 
   

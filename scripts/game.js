@@ -152,7 +152,7 @@ class Game {
 
   gameOver() {
     this.stop();
-    btsSound.pause();
+    btsSound.currentTime = 100
     gameOverSound.play();
     this.ctx.save();
     this.ctx.fillStyle = "rgba(0, 0, 0, 0.7)";

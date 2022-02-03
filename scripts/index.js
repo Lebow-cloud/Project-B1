@@ -36,6 +36,7 @@ startButton.onclick = () => {
   removePortada.style.display='none'
   canvas.width = 900;
   canvas.height = 600;
+  gameOverSound.currentTime = 100
   startButton.blur()
   gameOverSound.pause()
   btsSound.play()
