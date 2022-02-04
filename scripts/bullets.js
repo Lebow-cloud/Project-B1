@@ -49,8 +49,8 @@ class Bullets {
         bullet.sprite,
         bullet.x,
         bullet.y,
-        bullet.width,
-        bullet.height
+        bullet.width ,
+        bullet.height 
       )
     );
   }

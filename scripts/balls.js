@@ -65,8 +65,8 @@ class Balls {
         ball.sprite,
         ball.x,
         ball.y,
-        ball.width + 5,
-        ball.height + 5
+        ball.width + 25,
+        ball.height + 25
       )
     );
   }
